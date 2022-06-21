@@ -13,8 +13,8 @@ import unicodedata  # 한글 string의 길이를 다르게 인식하는 경우�
 
 
 # 파일 생성
-if 'file_lists.txt' not in os.listdir('readme_update'):
-    with open('readme_update/file_lists.txt', 'w') as f:
+if 'file_lists.txt' not in os.listdir('update_readme'):
+    with open('update_readme/file_lists.txt', 'w') as f:
         f.write('')
 
 # 이후 링크에 넣기 위해 상위 폴더 이름 불러오기
@@ -23,7 +23,7 @@ if 'file_lists.txt' not in os.listdir('readme_update'):
 
 # 기존 파일 리스트 불러오고 현재 디렉토리 파일과 비교해 추가된 파일을 탐색
 before_filelist = []
-with open('readme_update/file_lists.txt', 'r') as f:
+with open('update_readme/file_lists.txt', 'r') as f:
     for line in f.readlines():
         before_filelist.append(line.strip())
 
@@ -172,6 +172,6 @@ with open('./README.md', 'w', encoding='utf-8') as f:
         f.write(line + '\n')
 
 ## filelists 갱신
-with open('readme_update/file_lists.txt', 'a') as f:
+with open('update_readme/file_lists.txt', 'a') as f:
     for line in diff_files:
         f.write(line + '\n')
