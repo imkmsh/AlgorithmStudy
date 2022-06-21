@@ -98,14 +98,14 @@ def readme_list_insert(dfiles):
                                                                                      name):  # 이미 푼 문제인 경우 - 같은 이름 찾아 회차 추가
                     mark_trial = mark_by_trial(trial)
                     if trial.startswith('2'):
-                        refline[5] = mark_trial
+                        refline[5] = '['+mark_trial+'](https://imkmsh.github.com/Coding_test/solution_code)' + readme_list[i]
                     elif trial.startwith('3'):
-                        refline[6] = mark_trial
+                        refline[6] = '['+mark_trial+'](https://imkmsh.github.com/Coding_test/solution_code)' + readme_list[i]
                     else:
                         raise TypeError("입력 회차가 맞지 않습니다.")
 
                     # 링크 추가 - github 에서 한글 파일명을 인식하지 못해 보류..
-                    # refline[7] = r'<a href="' + folder + '/' + new_file + r'">풀이 코드</a>'
+                    refline[7] = '[코드](https://imkmsh.github.com/Coding_test/solution_code)' + readme_list[i]
 
                     # 내용 바꿈
                     readme_list[i] = '| ' + ' | '.join(refline) + ' |'
@@ -121,7 +121,7 @@ def readme_list_insert(dfiles):
 
                 readme_list.insert(i + 1,
                                    '| ' + ' | '.join(
-                                       [str(int(refline[0]) + 1), ref, type, name, mark_trial, '', '', '']
+                                       [str(int(refline[0]) + 1), ref, type, name, mark_trial, '', '', '[코드](https://imkmsh.github.com/Coding_test/solution_code)']
                                        # r'<a href="' + folder + '/' + new_file + r'">풀이 코드</a>']
                                    ) + ' |')
 
@@ -156,7 +156,8 @@ for key in refnew_list:
         '## ' + ref,
         '| 순번 | 구분 | 유형 | 문제 | 1회 풀이 | 2회 풀이 | 3회 풀이 | 풀이 코드 |',
         '| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | ------- |',
-        '| ' + ' | '.join([str(1), ref, type, name, mark_trial, '', '',
+        '| ' + ' | '.join([str(1), ref, type, name,
+                           '['+mark_trial+'](https://imkmsh.github.com/Coding_test/solution_code)' + refnew_list[key][0][:-3], '', '', ''
                            # r'<a href="' + folder + '/' + refnew_list[key][0] + r'">풀이 코드</a>'])
                            ]) + ' |'
     ]

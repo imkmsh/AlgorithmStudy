@@ -1,7 +1,7 @@
+bj_B5_PC_1.py
+bj_B2_분산처리_1.py
 bj_S4_VPS_1.py
 bj_S3_통계학_1.py
 bj_S5_stick_1.py
-bj_B5_PC_1.py
-bj_B2_분산처리_1.py
 bj_S4_treasure_1.py
 bj_S4_기타_1.py
