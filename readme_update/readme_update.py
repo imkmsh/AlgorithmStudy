@@ -13,7 +13,7 @@ import unicodedata  # 한글 string의 길이를 다르게 인식하는 경우�
 
 
 # 파일 생성
-if 'cote-filelists.txt' not in os.listdir('.'):
+if 'cote-filelists.txt' not in os.listdir('..'):
     with open('cote-filelists.txt', 'w') as f:
         f.write('')
 
@@ -28,7 +28,7 @@ with open('cote-filelists.txt', 'r') as f:
         before_filelist.append(line.strip())
 
 files = []
-for _, _, filenames in os.walk('.'):
+for _, _, filenames in os.walk('..'):
     for filename in filenames:
         if '_' in filename and filename.endswith('py'):
             files.append(filename)
