@@ -7,14 +7,14 @@ import os
 import unicodedata  # 한글 string의 길이를 다르게 인식하는 경우가 있어, unicodedata 패키지를 이용해 통일
 
 # 현재 파일 리스트 저장
-# with open('cote-filelists.txt', 'w') as f:
+# with open('file_lists.txt', 'w') as f:
 #     for file in files:
 #         f.write(file+'\n')
 
 
 # 파일 생성
-if 'cote-filelists.txt' not in os.listdir('..'):
-    with open('cote-filelists.txt', 'w') as f:
+if 'file_lists.txt' not in os.listdir('readme_update'):
+    with open('readme_update/file_lists.txt', 'w') as f:
         f.write('')
 
 # 이후 링크에 넣기 위해 상위 폴더 이름 불러오기
@@ -23,12 +23,12 @@ if 'cote-filelists.txt' not in os.listdir('..'):
 
 # 기존 파일 리스트 불러오고 현재 디렉토리 파일과 비교해 추가된 파일을 탐색
 before_filelist = []
-with open('cote-filelists.txt', 'r') as f:
+with open('readme_update/file_lists.txt', 'r') as f:
     for line in f.readlines():
         before_filelist.append(line.strip())
 
 files = []
-for _, _, filenames in os.walk('..'):
+for _, _, filenames in os.walk('solution_code'):
     for filename in filenames:
         if '_' in filename and filename.endswith('py'):
             files.append(filename)
@@ -37,7 +37,7 @@ diff_files = list(set(files) - set(before_filelist))
 
 # README 파일 모든 줄 리스트화
 readme_list = []
-with open('../README.md', 'r') as f:
+with open('./README.md', 'r', encoding='utf-8') as f:
     for line in f.readlines():
         readme_list.append(line.strip())
 
@@ -82,7 +82,7 @@ def readme_list_insert(dfiles):
 
         # 2회, 3회차 문제풀이 파일인 경우
         multi = False
-        if trial.startswith('2') or trial.startswith('3'):
+        if trial=='2' or trial=='3':
             multi = True
         ##################################################
 
@@ -167,11 +167,11 @@ for key in refnew_list:
 
 # breakpoint()
 # readme 갱신
-with open('../README.md', 'w') as f:
+with open('./README.md', 'w', encoding='utf-8') as f:
     for line in readme_list:
         f.write(line + '\n')
 
 ## filelists 갱신
-with open('cote-filelists.txt', 'a') as f:
+with open('readme_update/file_lists.txt', 'a') as f:
     for line in diff_files:
         f.write(line + '\n')
