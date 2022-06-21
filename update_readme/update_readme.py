@@ -13,7 +13,7 @@ import unicodedata  # 한글 string의 길이를 다르게 인식하는 경우�
 
 
 # 파일 생성
-if 'file_lists.txt' not in os.listdir('update_readme'):
+if 'file_lists.txt' not in os.listdir('.'):
     with open('update_readme/file_lists.txt', 'w') as f:
         f.write('')
 
@@ -23,12 +23,12 @@ if 'file_lists.txt' not in os.listdir('update_readme'):
 
 # 기존 파일 리스트 불러오고 현재 디렉토리 파일과 비교해 추가된 파일을 탐색
 before_filelist = []
-with open('update_readme/file_lists.txt', 'r') as f:
+with open('file_lists.txt', 'r') as f:
     for line in f.readlines():
         before_filelist.append(line.strip())
 
 files = []
-for _, _, filenames in os.walk('solution_code'):
+for _, _, filenames in os.walk('../solution_code'):
     for filename in filenames:
         if '_' in filename and filename.endswith('py'):
             files.append(filename)
@@ -37,7 +37,7 @@ diff_files = list(set(files) - set(before_filelist))
 
 # README 파일 모든 줄 리스트화
 readme_list = []
-with open('./README.md', 'r', encoding='utf-8') as f:
+with open('../README.md', 'r', encoding='utf-8') as f:
     for line in f.readlines():
         readme_list.append(line.strip())
 
@@ -167,11 +167,11 @@ for key in refnew_list:
 
 # breakpoint()
 # readme 갱신
-with open('./README.md', 'w', encoding='utf-8') as f:
+with open('../README.md', 'w', encoding='utf-8') as f:
     for line in readme_list:
         f.write(line + '\n')
 
 ## filelists 갱신
-with open('update_readme/file_lists.txt', 'a') as f:
+with open('file_lists.txt', 'a') as f:
     for line in diff_files:
         f.write(line + '\n')
