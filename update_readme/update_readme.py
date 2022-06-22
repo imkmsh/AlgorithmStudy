@@ -100,11 +100,11 @@ def readme_list_insert(dfiles):
                     if trial.startswith('2'):
                         refline[
                             5] = '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' + \
-                                 new_file + '.py)'
+                                 new_file + ')'
                     elif trial.startwith('3'):
                         refline[
                             6] = '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' + \
-                                 new_file + '.py)'
+                                 new_file + ')'
                     else:
                         raise TypeError("입력 회차가 맞지 않습니다.")
 
