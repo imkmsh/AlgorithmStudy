@@ -82,13 +82,13 @@ def readme_list_insert(dfiles):
 
         # 2회, 3회차 문제풀이 파일인 경우
         multi = False
-        if trial == '2' or trial == '3':
+        if trial.startswith('2') or trial.startswith('3'):
             multi = True
         ##################################################
 
         #### 파일 내용 README 에 입력 ########################
         # README 파일의 각 '구분'을 찾아 표 맨 마지막에 insert한다.
-        for i in range(len(readme_list)):
+        for i in range(3, len(readme_list)):
             # line[i]의 정보 가져오기  [구분, 유형, 이름, 회차, *참고]
             refline = [f.strip() for f in readme_list[i].split('|')]
             refline = refline[1:len(refline) - 1]
@@ -100,16 +100,15 @@ def readme_list_insert(dfiles):
                     if trial.startswith('2'):
                         refline[
                             5] = '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' + \
-                                 readme_list[i] + '.py)'
+                                 new_file + '.py)'
                     elif trial.startwith('3'):
                         refline[
                             6] = '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' + \
-                                 readme_list[i] + '.py)'
+                                 new_file + '.py)'
                     else:
                         raise TypeError("입력 회차가 맞지 않습니다.")
 
                     # 링크 추가 - github 에서 한글 파일명을 인식하지 못해 보류..
-                    refline[7] = '[코드](https://imkmsh.github.com/Coding_test/solution_code)' + readme_list[i]
 
                     # 내용 바꿈
                     readme_list[i] = '| ' + ' | '.join(refline) + ' |'
@@ -127,7 +126,7 @@ def readme_list_insert(dfiles):
                                    '| ' + ' | '.join(
                                        [str(int(refline[0]) + 1), ref, type, name,
                                         '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
-                                        new_file, '', '']
+                                        new_file + ')', '', '']
                                        # r'<a href="' + folder + '/' + new_file + r'">풀이 코드</a>']
                                    ) + ' |')
 
@@ -143,7 +142,7 @@ def readme_list_insert(dfiles):
                     '| ' + ' | '.join(
                         [str(int(refline[0]) + 1), ref, type, name,
                          '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
-                         new_file, '', '']
+                         new_file + ')', '', '']
                         # r'<a href="' + folder + '/' + new_file + r'">풀이 코드</a>']
                     ) + ' |')
 
