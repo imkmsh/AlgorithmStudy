@@ -82,7 +82,7 @@ def readme_list_insert(dfiles):
 
         # 2회, 3회차 문제풀이 파일인 경우
         multi = False
-        if trial=='2' or trial=='3':
+        if trial == '2' or trial == '3':
             multi = True
         ##################################################
 
@@ -98,9 +98,13 @@ def readme_list_insert(dfiles):
                                                                                      name):  # 이미 푼 문제인 경우 - 같은 이름 찾아 회차 추가
                     mark_trial = mark_by_trial(trial)
                     if trial.startswith('2'):
-                        refline[5] = '['+mark_trial+'](https://imkmsh.github.com/Coding_test/solution_code)' + readme_list[i]
+                        refline[
+                            5] = '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' + \
+                                 readme_list[i] + '.py)'
                     elif trial.startwith('3'):
-                        refline[6] = '['+mark_trial+'](https://imkmsh.github.com/Coding_test/solution_code)' + readme_list[i]
+                        refline[
+                            6] = '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' + \
+                                 readme_list[i] + '.py)'
                     else:
                         raise TypeError("입력 회차가 맞지 않습니다.")
 
@@ -121,7 +125,9 @@ def readme_list_insert(dfiles):
 
                 readme_list.insert(i + 1,
                                    '| ' + ' | '.join(
-                                       [str(int(refline[0]) + 1), ref, type, name, mark_trial, '', '', '[코드](https://imkmsh.github.com/Coding_test/solution_code)']
+                                       [str(int(refline[0]) + 1), ref, type, name,
+                                        '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
+                                        new_file, '', '']
                                        # r'<a href="' + folder + '/' + new_file + r'">풀이 코드</a>']
                                    ) + ' |')
 
@@ -135,7 +141,9 @@ def readme_list_insert(dfiles):
 
                 readme_list.append(  # 마지막에 append
                     '| ' + ' | '.join(
-                        [str(int(refline[0]) + 1), ref, type, name, mark_trial, '', '', '']
+                        [str(int(refline[0]) + 1), ref, type, name,
+                         '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
+                         new_file, '', '']
                         # r'<a href="' + folder + '/' + new_file + r'">풀이 코드</a>']
                     ) + ' |')
 
@@ -154,10 +162,11 @@ for key in refnew_list:
     # 새 양식 추가
     readme_list += [
         '## ' + ref,
-        '| 순번 | 구분 | 유형 | 문제 | 1회 풀이 | 2회 풀이 | 3회 풀이 | 풀이 코드 |',
-        '| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | ------- |',
+        '| 순번 | 구분 | 유형 | 문제 | 1회 풀이 | 2회 풀이 | 3회 풀이 |',
+        '| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |',
         '| ' + ' | '.join([str(1), ref, type, name,
-                           '['+mark_trial+'](https://imkmsh.github.com/Coding_test/solution_code)' + refnew_list[key][0][:-3], '', '', ''
+                           '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
+                           refnew_list[key][0][:-3] + '.py)', '', ''
                            # r'<a href="' + folder + '/' + refnew_list[key][0] + r'">풀이 코드</a>'])
                            ]) + ' |'
     ]
