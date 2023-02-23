@@ -13,6 +13,7 @@ ex) S3_민서 만들기_DP_1답.py
 | 1 | S3 | 1로만들기 | DP | [✅❗️](https://github.com/imkmsh/Coding_test/blob/master/solution_code/S3_1로만들기_DP_1답.py) |  |  |
 | 2 | S3 | 통계학 | 수학 | [✅](https://github.com/imkmsh/Coding_test/blob/master/solution_code/S3_통계학_수학_1.py) |  |  |
 | 3 | S3 | 123더하기 | DP | [✅](https://github.com/imkmsh/Coding_test/blob/master/solution_code/S3_123더하기_DP_1.py) |  |  |
+| 4 | S3 | 계단오르기 | DP | [✅❗️](https://github.com/imkmsh/Coding_test/blob/master/solution_code/S3_계단오르기_DP_1답.py) |  |  |
 ## S4
 | 순번 | 레벨 | 제목 | 유형 | 1회 풀이 | 2회 풀이 | 3회 풀이 |
 | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
@@ -31,3 +32,7 @@ ex) S3_민서 만들기_DP_1답.py
 | 순번 | 레벨 | 제목 | 유형 | 1회 풀이 | 2회 풀이 | 3회 풀이 |
 | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
 | 1 | B5 | 피시방알바 | 구현 | [✅](https://github.com/imkmsh/Coding_test/blob/master/solution_code/B5_피시방알바_구현_1.py) |  |  |
+## G4
+| 순번 | 레벨 | 제목 | 유형 | 1회 풀이 | 2회 풀이 | 3회 풀이 |
+| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
+| 1 | G4 | 집합의표현 | 분리집합 | [✅❗️](https://github.com/imkmsh/Coding_test/blob/master/solution_code/G4_집합의표현_분리집합_1답.py) |  |  |
