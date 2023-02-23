@@ -1,6 +1,6 @@
 '''
 입력 형태:
-| 순번 | 구분  |    문제   | 유형   | 1회 풀이  | 2회 풀이 | 3회 풀이 |
+| 순번 |  레벨  |  제목   | 유형   | 1회 풀이  | 2회 풀이 | 3회 풀이 |
 | 00  | 취코테| 모험가 길드 | 그리디 |  ✅❗️     |        |        |
 '''
 import os
@@ -58,7 +58,7 @@ def readme_list_insert(dfiles):
     # breakpoint()
     for new_file in dfiles:
         #### 입력 파일 파악 #################################
-        # '_' 로 구분지어 리스트화  - [구분, 유형, 이름, 회차]
+        # '_' 로 구분지어 리스트화  - [난이도, 유형, 이름, 회차]
         # if len(new_file[:-3].split('_')) < 5:
         ref, type, name, trial = new_file[:-3].split('_')[:4]
         # elif len(new_file[:-3].split('_')) == 5:   # 참고 항목이 뒤에 있을때
@@ -87,9 +87,9 @@ def readme_list_insert(dfiles):
         ##################################################
 
         #### 파일 내용 README 에 입력 ########################
-        # README 파일의 각 '구분'을 찾아 표 맨 마지막에 insert한다.
+        # README 파일의 각 '난이도'을 찾아 표 맨 마지막에 insert한다.
         for i in range(3, len(readme_list)):
-            # line[i]의 정보 가져오기  [구분, 유형, 이름, 회차, *참고]
+            # line[i]의 정보 가져오기  [난이도, 유형, 이름, 회차, *참고]
             refline = [f.strip() for f in readme_list[i].split('|')]
             refline = refline[1:len(refline) - 1]
 
@@ -115,7 +115,7 @@ def readme_list_insert(dfiles):
                     break
 
 
-            # 기존 구분에 속한 신규 문제인 경우 : 같은 구분 마지막에 줄 추가
+            # 기존 구분에 속한 신규 문제인 경우 : 같은 난이도 마지막에 줄 추가
             elif i < len(readme_list) - 1 and \
                     '|' in readme_list[i] and ref in readme_list[i] and \
                     '|' not in readme_list[i + 1] and ref not in readme_list[i + 1]:
@@ -161,7 +161,7 @@ for key in refnew_list:
     # 새 양식 추가
     readme_list += [
         '## ' + ref,
-        '| 순번 | 구분 | 유형 | 문제 | 1회 풀이 | 2회 풀이 | 3회 풀이 |',
+        '| 순번 | 레벨 | 제목 | 유형 | 1회 풀이 | 2회 풀이 | 3회 풀이 |',
         '| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |',
         '| ' + ' | '.join([str(1), ref, type, name,
                            '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
