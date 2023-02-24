@@ -60,7 +60,7 @@ def readme_list_insert(dfiles):
         #### 입력 파일 파악 #################################
         # '_' 로 구분지어 리스트화  - [난이도, 유형, 이름, 회차]
         # if len(new_file[:-3].split('_')) < 5:
-        ref, type, name, trial = new_file[:-3].split('_')[:4]
+        ref, date, num, type, name, trial = new_file[:-3].split('_')[:6]
         # elif len(new_file[:-3].split('_')) == 5:   # 참고 항목이 뒤에 있을때
         #     ref, type, name, trial, cf = new_file[:-3].split('_')
 
@@ -124,7 +124,7 @@ def readme_list_insert(dfiles):
 
                 readme_list.insert(i + 1,
                                    '| ' + ' | '.join(
-                                       [str(int(refline[0]) + 1), ref, type, name,
+                                       [str(int(refline[0]) + 1), ref, date, num, type, name, '',
                                         '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
                                         new_file + ')', '', '']
                                        # r'<a href="' + folder + '/' + new_file + r'">풀이 코드</a>']
@@ -140,7 +140,7 @@ def readme_list_insert(dfiles):
 
                 readme_list.append(  # 마지막에 append
                     '| ' + ' | '.join(
-                        [str(int(refline[0]) + 1), ref, type, name,
+                        [str(int(refline[0]) + 1), ref, date, num, type, name, '',
                          '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
                          new_file + ')', '', '']
                         # r'<a href="' + folder + '/' + new_file + r'">풀이 코드</a>']
@@ -154,16 +154,15 @@ refnew_list = readme_list_insert(diff_files)
 
 # 새 구분인 경우: README 맨 마지막에 add한다.
 for key in refnew_list:
-    ref, type, name, trial = refnew_list[key][0][:-3].split('_')[:4]
+    ref, date, num, type, name, trial = refnew_list[key][0][:-3].split('_')[:6]
 
     mark_trial = mark_by_trial(trial)
-
     # 새 양식 추가
     readme_list += [
-        '## ' + ref,
-        '| 순번 | 레벨 | 제목 | 유형 | 1회 풀이 | 2회 풀이 | 3회 풀이 |',
-        '| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |',
-        '| ' + ' | '.join([str(1), ref, type, name,
+        '### ' + ref,
+        '| 순번 | 레벨 | 날짜 | 번호 | 제목 | 유형 | 설명 | 1회 풀이 | 2회 풀이 | 3회 풀이 |',
+        '| :---: | :---: | :---: | :---: | :---: | :---: | :--- | :---: | :---: | :---: |',
+        '| ' + ' | '.join([str(1), ref, date, num, type, name, '',
                            '[' + mark_trial + '](https://github.com/imkmsh/Coding_test/blob/master/solution_code/' +
                            refnew_list[key][0][:-3] + '.py)', '', ''
                            # r'<a href="' + folder + '/' + refnew_list[key][0] + r'">풀이 코드</a>'])
@@ -180,7 +179,7 @@ with open('../README.md', 'w', encoding='utf-8') as f:
     for line in readme_list:
         f.write(line + '\n')
 
-## filelists 갱신
-with open('file_lists.txt', 'a') as f:
+### filelists 갱신
+with open('file_lists.txt', 'a', encoding='utf-8') as f:
     for line in diff_files:
         f.write(line + '\n')
